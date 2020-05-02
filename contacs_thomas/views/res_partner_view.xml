@@ -1,0 +1,270 @@
+<odoo>
+    <data>
+        <record id="res_country_state_form" model="ir.ui.view">
+            <field name="name">res.country.state.form</field>
+            <field name="model">res.country.state</field>
+            <field name="inherit_id" ref="base.view_country_state_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="before">
+                    <field name="indicative_state_code" string="Código" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_country_state_tree" model="ir.ui.view">
+            <field name="name">res.country.state.tree</field>
+            <field name="model">res.country.state</field>
+            <field name="inherit_id" ref="base.view_country_state_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="before">
+                    <field name="indicative_state_code" string="Código" />
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="street_code_form">
+            <field name="name">street.code.form</field>
+            <field name="model">street.code</field>
+            <field name="arch" type="xml">
+                <form string="Street Code">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="code" />
+                            <field name="company_id" groups="base.group_multi_company" readonly="1" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="street_code_tree">
+            <field name="name">street.code.tree</field>
+            <field name="model">street.code</field>
+            <field name="arch" type="xml">
+                <tree string="Street Codes">
+                    <field name="code" />
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="address_code_form">
+            <field name="name">address.code.form</field>
+            <field name="model">address.code</field>
+            <field name="arch" type="xml">
+                <form string="Address Code">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="code" />
+                            <field name="company_id" groups="base.group_multi_company" readonly="1" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="address_code_tree">
+            <field name="name">address.code.tree</field>
+            <field name="model">address.code</field>
+            <field name="arch" type="xml">
+                <tree string="Address Codes">
+                    <field name="code" />
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ciiu_value_form">
+            <field name="name">ciiu.value.form</field>
+            <field name="model">ciiu.value</field>
+            <field name="arch" type="xml">
+                <form string="Form ciiu">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="code" />
+                            <field name="company_id" groups="base.group_multi_company" readonly="1" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ciiu_value_tree">
+            <field name="name">ciiu.value.tree</field>
+            <field name="model">ciiu.value</field>
+            <field name="arch" type="xml">
+                <tree string="Form ciiu">
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="company_id" groups="base.group_multi_company" readonly="1" />
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record id="contacts_lead_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+             <field name="priority" eval="15"/>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <div />
+                </xpath>
+                <xpath expr="//field[@name='type']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='city']" position="replace">
+                    <field name="city_crm" placeholder="Ciudad"/>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="attributes">
+                    <attribute name="attrs">{'required': [('company_type', '=', 'person')]}</attribute>
+                </xpath>
+               <!-- <xpath expr="//field[@name='city']" position="replace">
+                     <field name="city_id" required='True'/>
+                </xpath>-->
+                <xpath expr="//field[@name='country_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='state_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='street2']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='street']" position="before">
+                    <field name="street_thomas" invisible='True'/>
+                </xpath>
+                <xpath expr="//field[@name='street']" position="attributes">
+                    <attribute name="attrs">{'readonly': [('check_colombia', '==', True)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='company_type']" position="after">
+                    <div class="oe_title">
+                        <!--<label for="name" class="oe_edit_only"/>-->
+                        <h1>
+                            <field name="name" placeholder="Full name" force_save="1" readonly="1" />
+                            <!--attrs="{'readonly': [('company_type', '=', 'person')]}"/>-->
+                        </h1>
+                    </div>
+                    <div class="o_row oe_edit_only">
+                        <field name="firts_name" placeholder="Nombre" attrs="{'invisible': [('company_type', '=', 'company')], 'required': [('company_type', '!=', 'company')]}" />
+                        <field name="last_name" placeholder="Apellido" attrs="{'invisible': [('company_type', '=', 'company')], 'required': [('company_type', '!=', 'company')]}" />
+                    </div>
+                    <div class="o_row oe_edit_only">
+                        <field name="middle_name" placeholder="Segundo Nombre" attrs="{'invisible': [('company_type', '=', 'company')]}" />
+                        <field name="second_last_name" placeholder="Segundo Apellido" attrs="{'invisible': [('company_type', '=', 'company')]}" />
+                    </div>
+                    <div class="o_row oe_edit_only">
+                        <field name="company_name" placeholder="Company name" attrs="{'invisible': [('company_type', '!=', 'company')], 'required': [('company_type', '=', 'company')]}" />
+                        <field name="company_nature" attrs="{'invisible': [('company_type', '!=', 'company')], 'required': [('company_type', '=', 'company')]}" />
+                    </div>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_title')]" position="after">
+                    <field name="check_colombia" invisible='True' />
+                    <label for="field_address_1" string="Campos de dirección" />
+                    <div class="o_row oe_edit_only">
+                        <field name="field_1" options="{'no_open': True, 'no_create': True}" attrs="{'required':[('check_colombia', '==', True)]}"/>
+                        <field name="field_2" attrs="{'required':[('check_colombia', '==', True)]}"/>
+                        <field name="field_3" />
+                        <field name="field_4" options="{'no_open': True, 'no_create': True}" />
+                        <field name="field_5" attrs="{'required':[('check_colombia', '==', True)]}"/>
+                        <field name="field_6" />
+                        <field name="field_7" options="{'no_open': True, 'no_create': True}" />
+                        <field name="field_8" attrs="{'required':[('check_colombia', '==', True)]}"/>
+                        <field name="field_9" options="{'no_open': True, 'no_create': True}" />
+                        <field name="field_10" />
+                        <field name="field_11" options="{'no_open': True, 'no_create': True}" />
+                        <field name="field_12" />
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field invisible="1" name="rut"/>
+                    <field name="rut" filename="file_name" string="RUT" attrs="{}" required="1"/>
+                    <field name="file_name" invisible="1"/>
+                </xpath>
+               <xpath expr="//field[@name='vat']" position="replace">
+                   <label for="l10n_co_document_type" string="Tipo de documento"/>
+                    <div class="o_row">
+                        <field name="l10n_co_document_type"/>
+                        <field name="vat" placeholder="e.g. BE0477472701"/>
+                        <label for="dv" string="DV" attrs="{'required':[('l10n_co_document_type', '==', 'rut')],'invisible':[('l10n_co_document_type', '!=', 'rut')]}"/>
+                        <field name="dv" attrs="{'required':[('l10n_co_document_type', '==', 'rut')],'invisible':[('l10n_co_document_type', '!=', 'rut')]}"/>
+                    </div>
+                    <field name="ciiu" placeholder="CIIU" widget="many2many_tags" string="CIIU"/>
+               </xpath>
+                <xpath expr="//sheet/group" position="after">
+                    <group colspan="2">
+                        <group colspan="1" col="1">
+                            <!--<field name="main_road" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>
+                            <field name="main_road_name" placeholder="38A BIS" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>
+                            <field name="generating_route" placeholder="20B" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>
+                            <field name="farm" placeholder="61" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>
+                            <field name="complement_adress" placeholder="SUR" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>-->
+                            <field name="customer_type" required='True'/>
+                            <field name="departure_date" attrs="{'required':[('customer_type', '==', 'INACTIVO')],'invisible':[('customer_type', '!=', 'INACTIVO')]}"/>
+                            <field name="sector" required='True'/>
+                            <field name="create_date" readonly="True" />
+                            <field name="date_update" />
+                            <field name="billing_potencial" required='True'/>
+                            <field name="l10n_co_document_type" invisible="True" />
+                        </group>
+                        <group colspan="1" col="1">
+                            <field name="consult_order" />
+                            <field name="fecha_consulta" attrs="{'required':[('consult_order', '!=', False)]}" />
+                            <field name="approval_compliance" attrs="{'required':[('consult_order', '=', 'REPORTADO')],'invisible':[('consult_order', '!=','REPORTADO')]}" />
+                            <field name="risk_profile" attrs="{'required':[('consult_order', '!=', False)]}" />
+                            <field name="risk_percentage" attrs="{'required':[('consult_order', '!=', False)]}" widget="percentage" />
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='function']" position="after">
+                    <field name="indicative_state" />
+                    <field name="indicative_country" />
+                </xpath>
+                <xpath expr="//field[@name='title']" position="after">
+                    <field name="res_lang_id" invisible='True'/>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='title']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='function']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='mobile']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='mobile']" position="after">
+                    <field name="website_id" attrs="{'invisible':[('type', '=', 'contact')]}" />
+                </xpath>
+                <xpath expr="//notebook/page[@name='sales_purchases']/group/group/field[@name='user_id']" position="attributes">
+                    <attribute name="string">Director Comercial</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='comment']" position="attributes">
+                    <attribute name="string">Datos relevantes / Perfil / Gustos</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='title']" position="after">
+                    <field name="rol" attrs="{'required':[('type', '==', 'contact')],'invisible':[('type', '!=', 'contact')]}" />
+                    <field name="attitude" attrs="{'required':[('type', '==', 'contact')],'invisible':[('type', '!=', 'contact')]}" />
+                </xpath>
+                <xpath expr="//field[@name='child_ids']" position="attributes">
+                    <attribute name="context">{'default_type': 'contact'}</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/kanban/templates/t[@t-name='kanban-box']/div/div[@class='oe_kanban_details']/div[@t-if='record.function.raw_value']" position="after">
+                    <div t-if="record.type.raw_value == 'contact'">
+                        <field name="rol" />
+                    </div>
+                    <div t-if="record.type.raw_value == 'contact'">
+                        <field name="attitude" />
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

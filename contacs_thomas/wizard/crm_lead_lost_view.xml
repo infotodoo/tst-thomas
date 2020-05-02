@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record id="crm_lead_lost_thomas" model="ir.ui.view">
+            <field name="name">crm.lead.lots.form</field>
+            <field name="model">crm.lead.lost</field>
+            <field name="inherit_id" ref="crm.crm_lead_lost_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                    <group colspan="2">
+                        <group colspan="1" col="2">
+                            <field name="contact_personal" string="Contacto" />
+                            <field name="winner_competitor" string="Competidor Ganador" />
+                            <field name="winner_price" string="Precio Ganador" widget="monetary" />
+                            <field name="required_time" string="Tiempo Requerido" />
+                            <field name="price_offered" string="Tiempo Ofertado por Thomas" />
+                            <field name="lost_problem" string="Problema de Calidad o Motivo de Perdida" />
+                            <field name="requeriments_no_fulfill" string="Requisitos No Cumplidos" />
+                            <field name="observations" string="Observaciones" />
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

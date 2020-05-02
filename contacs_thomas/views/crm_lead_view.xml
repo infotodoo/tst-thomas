@@ -1,0 +1,456 @@
+<odoo>
+    <data>
+        <record id="crm_lead_iniciative_form" model="ir.ui.view">
+                <field name="name">crm.lead2opportunity.partner.form</field>
+                <field name="model">crm.lead2opportunity.partner</field>
+                <field name="inherit_id" ref="crm.view_crm_lead2opportunity_partner" />
+                <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                 <xpath expr="//group[4]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="benefit_center_form">
+            <field name="name">benefit.center.form</field>
+            <field name="model">benefit.center</field>
+            <field name="arch" type="xml">
+                <form string="Centro Beneficios">
+                        <group>
+                            <field name="name" />
+                        </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="benefit_center_tree">
+            <field name="name">benefit.center.tree</field>
+            <field name="model">benefit.center</field>
+            <field name="arch" type="xml">
+                <tree string="Centro Beneficios">
+                        <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_segment_form">
+            <field name="name">crm.segment.form</field>
+            <field name="model">crm.segment</field>
+            <field name="arch" type="xml">
+                <form string="Segmento">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_segment_tree">
+            <field name="name">crm.segment.tree</field>
+            <field name="model">crm.segment</field>
+            <field name="arch" type="xml">
+                <tree string="Segmento">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="bussinets_units_form">
+            <field name="name">bussinets.units.form</field>
+            <field name="model">bussinets.units</field>
+            <field name="arch" type="xml">
+                <form string="Unidad de Negocio">
+                    <group>
+                        <field name="name" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="bussinets_units_tree">
+            <field name="name">bussinets.units.tree</field>
+            <field name="model">bussinets.units</field>
+            <field name="arch" type="xml">
+                <tree string="Unidad de Negocio">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="company_invoices_form">
+            <field name="name">company.invoices.form</field>
+            <field name="model">company.invoices</field>
+            <field name="arch" type="xml">
+                <form string="Empresa que factura">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="company_invoices_tree">
+            <field name="name">company.invoices.tree</field>
+            <field name="model">company.invoices</field>
+            <field name="arch" type="xml">
+                <tree string="Empresa que factura">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_strengths_form">
+            <field name="name">crm.strengths.form</field>
+            <field name="model">crm.strengths</field>
+            <field name="arch" type="xml">
+                <form string="Fortalezas">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_strengths_tree">
+            <field name="name">crm.strengths.tree</field>
+            <field name="model">crm.strengths</field>
+            <field name="arch" type="xml">
+                <tree string="Fortalezas">
+                        <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_weaknesses_form">
+            <field name="name">crm.weaknesses.form</field>
+            <field name="model">crm.weaknesses</field>
+            <field name="arch" type="xml">
+                <form string="Debilidades">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_weaknesses_tree">
+            <field name="name">crm.weaknesses.tree</field>
+            <field name="model">crm.weaknesses</field>
+            <field name="arch" type="xml">
+                <tree string="Debilidades">
+                        <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_cost_tree">
+            <field name="name">crm.cost.tree</field>
+            <field name="model">crm.cost</field>
+            <field name="arch" type="xml">
+                <tree string="Costos Operacionales" editable="bottom">
+                    <field name="name" string="Nombre" />
+                    <field name="cost_value" string="Valor" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_competitor_form">
+            <field name="name">crm.competitor.form</field>
+            <field name="model">crm.competitor</field>
+            <field name="arch" type="xml">
+                <form string="Competidores">
+                    <field name="competitor_name" />
+                    <!--<field name="strengths"/>
+                    <field name="weaknesses" readonly="1"/>-->
+                </form>
+            </field>
+        </record>
+
+       <!-- <record model="ir.ui.view" id="crm_competitor_tree">
+            <field name="name">crm.competitor.tree</field>
+            <field name="model">crm.competitor</field>
+            <field name="arch" type="xml">
+                <tree string="Competidores">
+                    <field name="competitor_name" />
+                    <field name="weaknesses" widget="many2many_tags" />
+                    <field name="strengths" widget="many2many_tags" />
+                </tree>
+            </field>
+        </record>-->
+
+        <record model="ir.ui.view" id="temporary_union_form">
+            <field name="name">temporary.union.form</field>
+            <field name="model">temporary.union</field>
+            <field name="arch" type="xml">
+                <form string="Competidores">
+                    <field name="name" string='Nombre lider'/>
+                    <field name="participation" invisible='True'/>
+                    <field name="funtions" invisible='True'/>
+                    <field name="temporary_union_ids" invisible='True'/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="unspsc_code_tree">
+            <field name="name">unspsc.code.tree</field>
+            <field name="model">unspsc.code</field>
+            <field name="arch" type="xml">
+                <tree string="Costos operacionales">
+                    <field name="code_name" string="Nombre" />
+                    <field name="name" string="Código" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="unspsc_code_form">
+            <field name="name">unspsc.code.form</field>
+            <field name="model">unspsc.code</field>
+            <field name="arch" type="xml">
+                <form string="Costos operacionales">
+                    <sheet>
+                        <group>
+                            <field name="code_name" string="Nombre" />
+                            <field name="name" string="Código" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--<record model="ir.ui.view" id="temporary_union_tree">
+            <field name="name">temporary.union.tree</field>
+            <field name="model">temporary.union</field>
+            <field name="arch" type="xml">
+                <tree string="Miembros unión temporal">
+                    <field name="name" string="Nombres" />
+                    <field name="participation" string="% Participación" widget="percentage" />
+                    <field name="funtions" string="Funciones" />
+                </tree>
+            </field>
+        </record>-->
+
+        <record id="crm_team_budget" model="ir.ui.view">
+            <field name="name">crm.team.form</field>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="sales_team.crm_team_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                    <group>
+                        <field name="budget" string="Presupuesto" widget="monetary" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="crm_lead_form" model="ir.ui.view">
+            <field name="name">crm.lead.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form" />
+            <field name="arch" type="xml">
+                 <xpath expr="//header/button[@name='action_set_lost']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                 </xpath>
+                 <xpath expr="//header/button[@name='%(crm.crm_lead_lost_action)d']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('active', '=', False)]}</attribute>
+                 </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='partner_id']" position="attributes">
+                    <attribute name="groups">sales_team.group_sale_manager</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="tracking">1</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="tracking">1</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='company_id']" position="attributes">
+                    <attribute name="tracking">1</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[4]/field[@name='date_deadline']" position="replace">
+                    <div />
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='partner_id']" position="after">
+                    <field name="customer_type_crm" string="Tipo de Cliente" required='True'/>
+                    <field name="benefit_center" required='True'/>
+                    <field name="segment_crm" string="Segmento" required='True'/>
+                    <field name="bussinets_units" string="Unidad de Negocio" required='True'/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='phone_state']" position="after">
+                    <field name="customer_type_crm" string="Tipo de Cliente" />
+                    <field name="benefit_center" required='True'/>
+                    <field name="segment_crm" string="Segmento" required='True'/>
+                    <field name="bussinets_units" string="Unidad de Negocio" required='True'/>
+                </xpath>
+                <xpath expr="//field[@name='team_id']" position="after">
+                    <field name="budget_from" required='True'/>
+                    <field name="company_id" required='True' tracking='True' />
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[7]/field[@name='company_id']" position="attributes">
+                  <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                  <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//group" position="after">
+                    <group>
+                        <field name="opportuny_situation" />
+                    </group>
+                    <group colspan="2">
+                        <group colspan="1" col="2">
+                            <field name="comercial_manager_approval" />
+                        </group>
+                        <group colspan="1" col="2">
+                            <field name="executive_approval" />
+                        </group>
+                    </group>
+
+                    <group colspan="2">
+                        <group colspan="1" col="2">
+                            <field name="date_deadline" required='True' tracking='True'/>
+                        </group>
+                        <group colspan="1" col="2">
+                            <field name="billing_potencial" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="create_date"/>
+                    </group>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[4]/field[@name='tag_ids']" position="after">
+                    <field name="tender_status" string='Estado de licitación' attrs="{'invisible':[('check_tag_ids', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[6]/field[@name='tag_ids']" position="after">
+                    <field name="tender_status" string='Estado de licitación' attrs="{'invisible':[('check_tag_ids', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[not(@name)][6]" position="attributes">
+                    <attribute name="string">Motivo de Perdida</attribute>
+                   <attribute name="attrs">{'invisible': [('active', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='lost_reason']" position="after">
+                    <field name="contact_personal" string="Contacto" attrs="{'invisible': [('active', '=', True)]}"/>
+                   <field name="winner_competitor" string="Competidor Ganador" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="winner_price" string="Precio Ganador" widget="monetary" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="required_time" string="Tiempo Requerido" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="price_offered" string="Tiempo Ofertado por Thomas" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="lost_problem" string="Problema de Calidad o Motivo de Perdida" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="requeriments_no_fulfill" string="Requisitos No Cumplidos" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="observations" string="Observaciones" attrs="{'invisible': [('active', '=', True)]}"/>
+                </xpath>
+                <xpath expr="//notebook/page[@name='lead']" position="after">
+                    <page string="Licitación">
+                        <group colspan="2">
+                            <group colspan="1" col="2">
+                                <field name="check_tag_ids" invisible='True'/>
+                                <field name="tender_type" attrs="{'required':[('check_tag_ids', '=', True)],'invisible':[('check_tag_ids', '=', False)]}"/>
+                                <field name="web_page_tender" widget='url' attrs="{'required':[('check_tag_ids', '=', True)],'invisible':[('check_tag_ids', '=', False)]}" />
+                            </group>
+                            <group colspan="1" col="2">
+                                <field name="process_number" attrs="{'required':[('check_tag_ids', '=', True)],'invisible':[('check_tag_ids', '=', False)]}" />
+                                <field name="object_crm" attrs="{'required':[('check_tag_ids', '=', True)],'invisible':[('check_tag_ids', '=', False)]}" />
+                                <field name="tender_budget" attrs="{'required':[('check_tag_ids', '=', True)],'invisible':[('check_tag_ids', '=', False)]}" />
+                                <field name="opening_date" attrs="{'required':[('check_tag_ids', '=', True)],'invisible':[('check_tag_ids', '=', False)]}" />
+                                <field name="close_date" attrs="{'required':[('check_tag_ids', '=', True)],'invisible':[('check_tag_ids', '=', False)]}" />
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Competencia">
+                        <group>
+                            <field name="competitor" required='True'>
+                                <tree string="Competidores" editable="bottom">
+                                    <field name="competitor_name" required='True'/>
+                                    <field name="strengths" widget="many2many_tags" required='True'/>
+                                    <field name="weaknesses" widget="many2many_tags" required='True'/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                    <page string="Unión Temporal">
+                        <group name="studio_group_ogsps">
+                            <group name="studio_group_ogsps_left">
+                            <field name="check_union_temporal" string="Nombres" invisible='True'/>
+                                <field name="temporary_union" string="¿Requiere Unión Temporal?" />
+                            </group>
+                            <group name="studio_group_ogsps_right">
+                                <field name="name_union" string="Nombre Unión Temporal" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}" />
+                                <field name="initials_union" string="Sigla Unión Temporal" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}" />
+                                <field name="leader_union_name" string="Líder de la Unión Temporal" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}" />
+                                <field name="company_invoices_id" string="Empresa que Factura" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}" />
+                            </group>
+                        </group>
+                        <field name="member_union_id" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}">
+                            <tree string="Miembros unión temporal" editable="bottom">
+                                <field name="name" string="Nombres" />
+                                <field name="participation" string="% Participación" widget="percentage" />
+                                <field name="funtions" string="Funciones" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Costos">
+                        <field name="check_stage" invisible='True'/>
+                        <field name="check_cost_table" invisible='True'/>
+                        <field name="cost_id" string='Costos Operacionales' attrs="{'required':[('check_stage', '=', True)]}">
+                            <tree string="Costos Operacionales">
+                                    <field name="name" string="Nombre"/>
+                                    <field name="cost_value" string="Valor" widget="monetary"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="name" string="Nombre" attrs="{'required':[('parent.check_stage', '=', True), ('parent.type', '!=', 'lead')]}"/>
+                                    <field name="cost_value" string="Valor" widget="monetary"/>
+                                </group>
+                            </form>
+                        </field>
+                        <group colspan="2">
+                            <group colspan="1" col="2">
+                                <field name="cost_total" widget="monetary" attrs="{'required':[('check_stage', '=', True)]}"/>
+                                <field name="quantity" attrs="{'required':[('check_stage', '=', True)]}"/>
+                                <field name="unit_price" widget="monetary" attrs="{'required':[('check_stage', '=', True)]}"/>
+                                <field name="price_n_iva" widget="monetary" attrs="{'required':[('check_stage', '=', True)]}"/>
+                                <field name="contribution_percentage" widget="monetary" attrs="{'required':[('check_stage', '=', True)]}"/>
+                            </group>
+                            <group colspan="1" col="2">
+                                <field name="comercial_approval"/>
+                                <field name="financial_approval"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Contrato">
+                        <group colspan="2">
+                            <group colspan="1" col="2">
+                                <field name="type_contract" />
+                                <field name="contract_number" />
+                                <field name="subscription_date" />
+                                <field name="subscription_start" />
+                                <field name="subscription_end" />
+                                <field name="approval_director" />
+                            </group>
+                            <group colspan="1" col="2">
+                                <field name="object_contract" />
+                                <field name="inicial_contract_value" />
+                                <field name="executed_contract_value" />
+                                <field name="act_liquidation" />
+                                <field name="liquidation_date" attrs="{'required':[('act_liquidation', '==', 'SI')],'invisible':[('act_liquidation', '!=', 'SI')]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="code_id" string="Códigos UNSPSC">
+                                <tree string="Costos Operacionales" editable="bottom">
+                                    <field name="name" string="Código" />
+                                    <field name="code_name" string="Nombre" />
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                             <field name="observations_contract" string="Observaciones"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
