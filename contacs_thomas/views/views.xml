@@ -1,0 +1,1125 @@
+<odoo>
+    <data>
+        <record id="res_country_state_form" model="ir.ui.view">
+            <field name="name">res.country.state.form</field>
+            <field name="model">res.country.state</field>
+            <field name="inherit_id" ref="base.view_country_state_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="before">
+                    <field name="indicative_state_code" string='Código'/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_country_state_tree" model="ir.ui.view">
+            <field name="name">res.country.state.tree</field>
+            <field name="model">res.country.state</field>
+            <field name="inherit_id" ref="base.view_country_state_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="before">
+                    <field name="indicative_state_code" string='Código'/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="street_code_form">
+            <field name="name">street.code.form</field>
+            <field name="model">street.code</field>
+            <field name="arch" type="xml">
+                <form string="Street Code">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+       <record model="ir.ui.view" id="street_code_tree">
+            <field name="name">street.code.tree</field>
+            <field name="model">street.code</field>
+            <field name="arch" type="xml">
+                <tree string="Street Codes">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="address_code_form">
+            <field name="name">address.code.form</field>
+            <field name="model">address.code</field>
+            <field name="arch" type="xml">
+                <form string="Address Code">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+       
+        <record model="ir.ui.view" id="address_code_tree">
+            <field name="name">address.code.tree</field>
+            <field name="model">address.code</field>
+            <field name="arch" type="xml">
+                <tree string="Address Codes">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ciiu_value_form">
+            <field name="name">ciiu.value.form</field>
+            <field name="model">ciiu.value</field>
+            <field name="arch" type="xml">
+                <form string="Form ciiu">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+       <record model="ir.ui.view" id="ciiu_value_tree">
+            <field name="name">ciiu.value.tree</field>
+            <field name="model">ciiu.value</field>
+            <field name="arch" type="xml">
+                <tree string="Form ciiu">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="unspsc_code_tree">
+            <field name="name">unspsc.code.tree</field>
+            <field name="model">unspsc.code</field>
+            <field name="arch" type="xml">
+                <tree string="Costos operacionales" editable="bottom">
+                    <field name="name" string="Código"/>
+                    <field name="code_name" string="Nombre"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_cost_tree">
+            <field name="name">crm.cost.tree</field>
+            <field name="model">crm.cost</field>
+            <field name="arch" type="xml">
+                <tree string="Costos Operacionales" editable="bottom">
+                    <field name="name" string="Nombre"/>
+                    <field name="cost_value" string="Valor"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_competitor_form">
+            <field name="name">crm.competitor.form</field>
+            <field name="model">crm.competitor</field>
+            <field name="arch" type="xml">
+                <form string="Competidores">
+                    <field name="competitor_name"/>
+                    <!--<field name="strengths"/>
+                    <field name="weaknesses" readonly="1"/>-->
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_competitor_tree">
+            <field name="name">crm.competitor.tree</field>
+            <field name="model">crm.competitor</field>
+            <field name="arch" type="xml">
+                <tree string="Competidores">
+                    <field name="competitor_name" />
+                    <field name="weaknesses" widget="many2many_tags"/>
+                    <field name="strengths" widget="many2many_tags" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="temporary_union_tree">
+            <field name="name">temporary.union.tree</field>
+            <field name="model">temporary.union</field>
+            <field name="arch" type="xml">
+                <tree string="Miembros unión temporal">
+                    <field name="name" string="Nombres"/>
+                    <field name="participation" string="% Participación" widget="percentage"/>
+                    <field name="funtions" string="Funciones"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="crm_team_budget" model="ir.ui.view">
+            <field name="name">crm.team.form</field>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                    <group>
+                        <field name="budget" string='Presupuesto' widget='monetary'/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="crm_lead_lost_thomas" model="ir.ui.view">
+                    <field name="name">crm.lead.lots.form</field>
+                    <field name="model">crm.lead.lost</field>
+                    <field name="inherit_id" ref="crm.crm_lead_lost_view_form"/>
+                    <field name="arch" type="xml">
+                        <xpath expr="//group" position="after">
+                        <group colspan="2">
+                             <group colspan="1" col="2">
+                            <field name="contact_personal" string="Contacto"/>
+                            <field name="winner_competitor" string="Competidor Ganador"/>
+                            <field name="winner_price" string="Precio Ganador" widget="monetary"/>
+                            <field name="required_time" string="Tiempo Requerido"/>
+                            <field name="price_offered" string="Tiempo Ofertado por Thomas"/>
+                            <field name="lost_problem" string="Problema de Calidad o Motivo de Perdida"/>
+                            <field name="requeriments_no_fulfill" string="Requisitos No Cumplidos"/>
+                            <field name="observations" string="Observaciones"/>
+                            </group>
+                        </group>
+                        </xpath>
+                    </field>
+        </record>
+        <record id="contacts_lead_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                <div/>
+            </xpath>
+            <xpath expr="//field[@name='website']" position="attributes">
+                <attribute name="attrs">{'required': [('company_type', '=', 'company')]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='street2']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='company_type']" position="after">
+                <div class="oe_title">
+                    <!--<label for="name" class="oe_edit_only"/>-->
+                    <h1>
+                        <field name="name" placeholder="Full name" force_save="1" readonly="1"/>
+                        <!--attrs="{'readonly': [('company_type', '=', 'person')]}"/>-->
+                    </h1>
+                </div> 
+                <div class="o_row oe_edit_only">
+                    <field name="firts_name" placeholder="First name" attrs="{'invisible': [('company_type', '=', 'company')], 'required': [('company_type', '!=', 'company')]}"/>
+                    <field name="last_name" placeholder="Last name" attrs="{'invisible': [('company_type', '=', 'company')], 'required': [('company_type', '!=', 'company')]}"/>
+                </div>
+                <div class="o_row oe_edit_only">
+                    <field name="middle_name" placeholder="Middle name" attrs="{'invisible': [('company_type', '=', 'company')]}"/>
+                    <field name="second_last_name" placeholder="Second last name" attrs="{'invisible': [('company_type', '=', 'company')]}"/>
+                </div>
+                <div class="o_row oe_edit_only">
+                    <field name="company_name" placeholder="Company name" attrs="{'invisible': [('company_type', '!=', 'company')], 'required': [('company_type', '=', 'company')]}"/>
+                    <field name="company_nature" attrs="{'invisible': [('company_type', '!=', 'company')], 'required': [('company_type', '=', 'company')]}"/>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <label for="field_address_1" string="Campos de dirección"/>
+                <div class="o_row oe_edit_only">
+                    <field name="field_1" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_2"/>
+                    <field name="field_3"/>
+                    <field name="field_4" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_5"/>
+                    <field name="field_6"/>
+                    <field name="field_7" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_8"/>
+                    <field name="field_9" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_10"/>
+                    <field name="field_11" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_12"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field invisible="1" name="rut"/>
+                <field filename="rut" name="rut" string="RUT" attrs="{}" required="1"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                  <field name="ciiu" placeholder="CIIU" widget="many2many_tags" string='CIIU'/>
+                   <label for="nit" string="NIT"/>
+                    <div class="o_row">
+                        <field name="nit"/>
+                        <label for="dv" string="DV" attrs="{'required':[('l10n_co_document_type', '==', 'rut')],'invisible':[('l10n_co_document_type', '!=', 'rut')]}"/>
+                        <field name="dv" attrs="{'required':[('l10n_co_document_type', '==', 'rut')],'invisible':[('l10n_co_document_type', '!=', 'rut')]}"/>
+                    </div>
+            </xpath>
+
+                <xpath expr="//sheet/group" position="after">
+                    <group colspan="2">
+                        <group colspan="1" col="1">
+                            <!--<field name="main_road" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>
+                            <field name="main_road_name" placeholder="38A BIS" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>
+                            <field name="generating_route" placeholder="20B" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>
+                            <field name="farm" placeholder="61" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>
+                            <field name="complement_adress" placeholder="SUR" attrs="{'invisible':[('company_type', '=', 'person')], 'required':[('company_type', '==', 'company')]}"/>-->
+                            <field name="customer_type"/>
+                            <field name="departure_date" attrs="{'required':[('customer_type', '==', 'INACTIVO')],'invisible':[('customer_type', '!=', 'INACTIVO')]}"/>
+                            <field name="sector"/>
+                            <field name="create_date" readonly='True'/>
+                            <field name="date_update"/>
+                            <field name="billing_potencial"/>
+                            <field name="l10n_co_document_type" invisible='True'/>
+                        </group>
+                        <group colspan="1" col="1">
+                            <field name="consult_order"/>
+                            <field name="consult_date" attrs="{'required':[('consult_order', '!=', False)]}"/>
+                            <field name="approval_compliance" attrs="{'required':[('consult_order', '!=', False)],'invisible':[('consult_order', '!=','REPORTADO')]}"/>
+                            <field name="risk_profile" attrs="{'required':[('consult_order', '!=', False)]}"/>
+                            <field name="risk_percentage" attrs="{'required':[('consult_order', '!=', False)]}" widget="percentage"/>
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='function']" position="after">
+                    <field name="indicative_state"/>
+                    <field name="indicative_country"/>
+                </xpath>
+                <xpath expr="//field[@name='title']" position="after">
+                    <field name="res_lang_id"/>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='title']" position="attributes">
+                 <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='function']" position="attributes">
+                 <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='email']" position="attributes">
+                 <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='mobile']" position="attributes">
+                 <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='mobile']" position="after">
+                 <field name="website_id" attrs="{'invisible':[('type', '=', 'contact')]}"/>
+                </xpath>
+                <xpath expr="//notebook/page[@name='sales_purchases']/group/group/field[@name='user_id']" position="attributes">
+                 <attribute name="string">Director Comercial</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='comment']" position="attributes">
+                 <attribute name="string">Datos relevantes / Perfil / Gustos</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/form/sheet/group[@col='12']/group[@colspan='5']/field[@name='title']" position="after">
+                    <field name="rol" attrs="{'required':[('type', '==', 'contact')],'invisible':[('type', '!=', 'contact')]}"/>
+                    <field name="attitude" attrs="{'required':[('type', '==', 'contact')],'invisible':[('type', '!=', 'contact')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='child_ids']" position="attributes">
+                   <attribute name="context">{'default_type': 'contact'}</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']/kanban/templates/t[@t-name='kanban-box']/div/div[@class='oe_kanban_details']/div[@t-if='record.function.raw_value']" position="after">
+                    <div t-if="record.type.raw_value == 'contact'"><field name="rol"/></div>
+                    <div t-if="record.type.raw_value == 'contact'"><field name="attitude"/></div>
+	            </xpath>
+            </field>
+        </record>
+        <record id="crm_lead_form" model="ir.ui.view">
+            <field name="name">crm.lead.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='partner_id']" position="attributes">
+                    <attribute name="groups">sales_team.group_sale_manager</attribute>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[4]/field[@name='date_deadline']" position="replace">
+                    <div/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='partner_id']" position="after">
+                   <field name="customer_type_crm" string="Tipo de Cliente"/>
+                    <field name="benefit_center"/>
+                    <field name="segment_crm_from" string="Segmento"/>
+                    <field name="bussinets_units_from" string="Unidad de Negocio"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='phone_state']" position="after">
+                   <field name="customer_type_crm" string="Tipo de Cliente"/>
+                    <field name="benefit_center"/>
+                    <field name="segment_crm_from" string="Segmento"/>
+                    <field name="bussinets_units_from" string="Unidad de Negocio"/>
+                </xpath>
+                <xpath expr="//field[@name='team_id']" position="after">
+                   <field name="budget_from"/>
+                   <field name="company_id"/>
+                </xpath>
+                <xpath expr="//group" position="after">
+                  <group>
+                        <field name="opportuny_situation"/>
+                  </group>
+                  <group colspan="2">
+                        <group colspan="1" col="2">
+                            <field name="comercial_manager_approval"/>
+                        </group>
+                        <group colspan="1" col="2">
+                            <field name="executive_approval"/>
+                        </group>
+                    </group>
+
+                  <group colspan="2">
+                    <group colspan="1" col="2">
+                        <field name="date_deadline"/>
+                    </group>
+                  <group colspan="1" col="2">
+                    <field name="billing_potencial"/>
+                  </group>
+                  </group>
+                </xpath>
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                   <field name="tender_status"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[not(@name)][6]" position="attributes">
+                   <attribute name="string">Motivo de Perdida</attribute>
+                </xpath>
+                <!--<xpath expr="//field[@name='lost_reason']" position="after">
+                    <field name="contact_personal_from"/>
+                </xpath>-->
+                <xpath expr="//notebook/page[@name='lead']" position="after">
+                    <page string="Licitación">
+                     <group colspan="2">
+                        <group colspan="1" col="2">
+                            <field name="test_stage_ids" invisible='True'/>
+                            <field name="tender_type" attrs="{'required':[('test_stage_ids', '=', True)],'invisible':[('test_stage_ids', '=', False)]}"/>
+                            <field name="web_page_tender" widget="website_button" attrs="{'required':[('test_stage_ids', '=', True)],'invisible':[('test_stage_ids', '=', False)]}"/>
+                        </group>
+                        <group colspan="1" col="2">
+                            <field name="process_number" attrs="{'required':[('test_stage_ids', '=', True)],'invisible':[('test_stage_ids', '=', False)]}"/>
+                            <field name="object_crm" attrs="{'required':[('test_stage_ids', '=', True)],'invisible':[('test_stage_ids', '=', False)]}"/>
+                            <field name="tender_budget" attrs="{'required':[('test_stage_ids', '=', True)],'invisible':[('test_stage_ids', '=', False)]}"/>
+                            <field name="opening_date" attrs="{'required':[('test_stage_ids', '=', True)],'invisible':[('test_stage_ids', '=', False)]}"/>
+                            <field name="close_date" attrs="{'required':[('test_stage_ids', '=', True)],'invisible':[('test_stage_ids', '=', False)]}"/>
+                        </group>
+                     </group>
+                    </page>
+                    <page string="Competencia">
+                        <group>
+                            <field name="competitor">
+                                <tree string="Competidores" editable="bottom">
+                                    <field name="competitor_name"/>
+                                    <field name="strengths" widget="many2many_tags"/>
+                                    <field name="weaknesses" widget="many2many_tags"/>
+                                </tree>    
+                            </field>
+                        </group>
+                    </page>
+                    <page string="Unión Tempopral">
+                        <group name="studio_group_ogsps">
+                            <group name="studio_group_ogsps_left">
+                                <field name="temporary_union" string="¿Requiere Unión Temporal?"/>
+                            </group>
+                            <group name="studio_group_ogsps_right">
+                                <field name="name_union" string="Nombre Unión Temporal" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}"/>
+                                <field name="initials_union" string="Sigla Unión Temporal" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}"/>
+                                <field name="leader_union_id" string="Líder de la Unión Temporal" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}"/>
+                                <field name="company_invoices_id" string="Empresa que Factura" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}"/>
+                            </group>
+                        </group>
+                        <field name="member_union_id" attrs="{'required':[('temporary_union', '==', 'SI')],'invisible':[('temporary_union', '!=', 'SI')]}">
+                            <tree string="Miembros unión temporal" editable="bottom">
+                                <field name="name" string="Nombres"/>
+                                <field name="participation" string="% Participación" widget="percentage"/>
+                                <field name="funtions" string="Funciones"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Costos">
+                        <group colspan="2">
+                            <group colspan="1" col="2">
+                                <field name="cost_total" widget="monetary"/>
+                                <field name="quantity"/>
+                                <field name="unit_price" widget="monetary"/>
+                                <field name="price_n_iva" widget="monetary"/>
+                                <field name="contribution_percentage" widget="monetary"/>
+                            </group>
+                            <group colspan="1" col="2">
+                                <field name="comercial_approval"/>
+                                <field name="financial_approval"/>
+                            </group>
+                        </group>
+                        <field name="cost_id" editable="bottom">
+                            <tree string="Costos Operacionales" editable="bottom">
+                                <field name="name" string="Nombre"/>
+                                <field name="cost_value" string="Valor" widget="monetary"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Contrato">
+                         <group colspan="2">
+                            <group colspan="1" col="2">
+                                <field name="type_contract"/>
+                                <field name="contract_number"/>
+                                <field name="subscription_date"/>
+                                <field name="subscription_start"/>
+                                <field name="subscription_end"/>
+                                <field name="approval_director"/>
+                            </group>
+                            <group colspan="1" col="2">
+                                <field name="object_contract"/>
+                                <field name="inicial_contract_value"/>
+                                <field name="executed_contract_value"/>
+                                <field name="act_liquidation"/>
+                                <field name="liquidation_date" attrs="{'required':[('act_liquidation', '==', 'SI')],'invisible':[('act_liquidation', '!=', 'SI')]}"/>
+                            </group>
+                        </group>
+                        <group>
+                        <field name="code_id" string="Códigos UNSPSC" >
+                            <tree string="Costos Operacionales" editable="bottom">
+                                <field name="name" string="Código"/>
+                                <field name="code_name" string="Nombre"/>
+                            </tree>
+                        </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="solicitud_aprobacion_oficial" model="mail.template">
+            <field name="name">SOLICITUD DE APROBACIÓN OFICIAL DE CUMPLIMIENTO. LISTAS RESTRICTIVAS</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SOLICITUD DE APROBACIÓN OFICIAL DE CUMPLIMIENTO. LISTAS RESTRICTIVAS</field>
+            <field name="partner_to">${yovani.hernandez@thomasgreg.com, juanita.franco@thomasgreg.com}</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial Saludo, <br/>
+                        <br/>
+                        Se ha creado el cliente ${(object.name)} y presenta consulta de lista restrictiva negativa.
+                        <br/>
+                        <br/> 
+                        ${(object.name)}<br/> 
+                        ${(object.nit)}<br/> 
+                        ${(object.customer_type)}<br/> 
+                        ${(object.sector)}<br/> 
+                        ${(object.billing_potencial)}<br/> 
+                        <br/> 
+                        <br/>  
+                        ${(object.consult_order)}<br/> 
+                        ${(object.consult_date)}<br/> 
+                        ${(object.risk_profile)}<br/> 
+                        ${(object.risk_percentage)}<br/> 
+                        <br/>
+                        <br/>                
+                        Quedo atento a sus indicaciones
+                        </div>
+                        ]]></field>
+        </record>
+        <record id="solicitud_aprobacion_junta_temporal" model="mail.template">
+            <field name="name">SOLICITUD DE APROBACIÓN JUNTA DIRECTIVA UNIÓN TEMPORAL</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SOLICITUD DE APROBACIÓN JUNTA DIRECTIVA UNIÓN TEMPORAL</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial Saludo, <br/>
+                        <br/>
+                        Se ha creado la nueva iniciativa ${(object.name)} del cliente ${(object.partner_id.display_name)} que requiere autorización de junta Directiva por unión Temporal.
+                        <br/>
+                        <br/>
+                        Los datos de la Oportunidad son:
+                        <br/> 
+                        <br/>  
+                        ${(object.partner_id.display_name)}<br/> 
+                        ${(object.benefit_center.name)}<br/> 
+                        ${(object.segment_crm_from)}<br/> 
+                        ${(object.bussinets_units_from)}<br/> 
+                        ${(object.user_id.name)}<br/> 
+                        ${(object.priority)}<br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        ${(object.process_number)}<br/> 
+                        ${(object.object_crm)}<br/> 
+                        ${(object.tender_budget)}<br/> 
+                        ${(object.opening_date)}<br/> 
+                        ${(object.close_date)}<br/> 
+                        ${(object.tender_type)}<br/> 
+                        <br/>
+                        <br/>
+                        <br/>
+                        ${(object.name_union)}<br/> 
+                        ${(object.initials_union)}<br/> 
+                        ${(object.leader_union_id.name)}<br/> 
+                        ${(object.company_invoices_id)}<br/>
+                        <br/>
+                        <br/>
+                        Quedamos atentos a su respuesta 
+                        </div>
+                        ]]></field>
+        </record>
+        <record id="solicitud_aprobacion_junta" model="mail.template">
+            <field name="name">SOLICITUD DE APROBACIÓN JUNTA DIRECTIVA</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SOLICITUD DE APROBACIÓN JUNTA DIRECTIVA</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial Saludo, <br/>
+                        <br/>
+                        Se ha creado la nueva iniciativa ${(object.name)} del cliente ${(object.partner_id.display_name)} que requeire autorización de junta Directiva.
+                        <br/>
+                        <br/>
+                        Los datos de la Oportunidad son:
+                        <br/> 
+                        <br/> 
+                        <br/>  
+                        ${(object.partner_id.display_name)}<br/> 
+                        ${(object.benefit_center.name)}<br/> 
+                        ${(object.segment_crm_from)}<br/> 
+                        ${(object.bussinets_units_from)}<br/> 
+                        ${(object.user_id.name)}<br/> 
+                        ${(object.priority)}<br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        ${(object.process_number)}<br/> 
+                        ${(object.object_crm)}<br/> 
+                        ${(object.tender_budget)}<br/> 
+                        ${(object.opening_date)}<br/> 
+                        ${(object.close_date)}<br/> 
+                        ${(object.tender_type)}<br/> 
+                        <br/>
+                        <br/>
+                        Quedamos atentos a su respuesta.
+                        </div>
+                        ]]></field>
+        </record>
+        <record id="cambios_etapa_entregado_cliente" model="mail.template">
+            <field name="name">CAMBIOS DE ETAPA A ENTREGADO AL CLIENTE</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">CAMBIOS DE ETAPA A ENTREGADO AL CLIENTE</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} a cambiado a etapa ${(object.stage_id.name)}.
+                        </div>
+                        ]]></field>
+        </record>
+        <record id="cambios_etapa_oportunidad" model="mail.template">
+            <field name="name">CAMBIOS DE ETAPA DE LA OPORTUNIDAD</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">CAMBIOS DE ETAPA DE LA OPORTUNIDAD</field>
+            <field name="partner_to"></field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial Saludo, <br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} a cambiado a etapa ${(object.stage_id.name)}.
+                        </div>
+                        ]]></field>
+        </record>
+        <record id="licitacion_subasta" model="mail.template">
+            <field name="name">LICITACION REQUIERE SUBASTA</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">LICITACION REQUIERE SUBASTA</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere ${(object.tender_type)}.
+                        <br/>
+                        <br/>
+                        Fecha de subasta:
+                        <br/>
+                        <br/>
+                        ${(object.web_page_tender)}<br/>
+                        ${(object.process_number)}<br/>
+                        ${(object.object_crm)}<br/>
+                        ${(object.tender_budget)}<br/>
+                        ${(object.opening_date)}<br/>
+                        ${(object.close_date)}<br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        Agradecemos su colaboración con la definición de valores a ofertar y acompañamiento en la subasta.
+                        </div>
+                        ]]></field>
+        </record>
+        <record id="estimar_costos_nueva_licitacion" model="mail.template">
+            <field name="name">SE REQUIERE ESTIMAR COSTOS DE UNA NUEVA OPORTUNIDAD DE LICITACIÓN</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE REQUIERE ESTIMAR COSTOS DE UNA NUEVA OPORTUNIDAD DE LICITACIÓN</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere ser costeada.
+                        <br/>
+                        <br/>
+                        Plazo de entrega:<br/>
+                        <br/>
+                        <br/>
+                        Datos de la Oportunidad:<br/>
+                        <br/>
+                        <br/>
+                        ${(object.web_page_tender)}<br/>
+                        ${(object.process_number)}<br/>
+                        ${(object.object_crm)}<br/>
+                        ${(object.tender_budget)}<br/>
+                        ${(object.opening_date)}<br/>
+                        ${(object.close_date)}<br/>
+                        ${(object.tender_status)}<br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        Agradecemos su pronta respuesta.
+                        </div>
+                        ]]></field>
+        </record>
+        <record id="estimar_costos_nueva" model="mail.template">
+            <field name="name">SE REQUIERE ESTIMAR COSTOS DE UNA NUEVA OPORTUNIDAD</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE REQUIERE ESTIMAR COSTOS DE UNA NUEVA OPORTUNIDAD</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere ser costeada.
+                        <br/>
+                        <br/>
+                        Plazo de entrega:<br/>
+                        <br/>
+                        <br/>
+                        Datos de la Oportunidad:<br/>
+                        <br/>
+                        <br/>
+                        ${(object.partner_id.display_name)}<br/>
+                        ${(object.benefit_center.name)}<br/>
+                        ${(object.segment_crm_from)}<br/>
+                        ${(object.bussinets_units_from)}<br/>
+                        <br/>
+                        <br/>
+                        Agradecemos su pronta respuesta.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="remita_observaciones_liquidacion" model="mail.template">
+            <field name="name">SE REQUIERE REMITA OBSERVACIONES AL PROCESO DE LICITACIÓN</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE REQUIERE REMITA OBSERVACIONES AL PROCESO DE LICITACIÓN</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere que remita sus observaciones.
+                        <br/>
+                        <br/>
+                        Fecha límite para observar:<br/>
+                        <br/>
+                        <br/>
+                        ${(object.web_page_tender)}<br/>
+                        ${(object.process_number)}<br/>
+                        ${(object.object_crm)}<br/>
+                        ${(object.tender_budget)}<br/>
+                        ${(object.opening_date)}<br/>
+                        ${(object.close_date)}<br/>
+                        ${(object.tender_status)}<br/>
+                        <br/>
+                        <br/>
+                        Agradecemos su pronta respuesta.
+                        </div>
+                        ]]></field>
+        </record>
+        <record id="aprobacion_oferta" model="mail.template">
+            <field name="name">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL LICITACIÓN</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL LICITACIÓN</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere su aprobación.
+                        <br/>
+                        <br/>
+                        ${(object.web_page_tender)}<br/>
+                        ${(object.process_number)}<br/>
+                        ${(object.object_crm)}<br/>
+                        ${(object.tender_budget)}<br/>
+                        ${(object.opening_date)}<br/>
+                        ${(object.close_date)}<br/>
+                        ${(object.tender_status)}<br/>
+                        <br/>
+                        <br/>
+                        Quedamos atentos.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="aprobacion_oferta_comercial" model="mail.template">
+            <field name="name">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere su aprobación.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="aprobacion_oferta_comercial_gerente" model="mail.template">
+            <field name="name">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere su aprobación.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="aprobacion_oferta_comercial_financiero" model="mail.template">
+            <field name="name">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere su aprobación.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="revision_propuesta_licitacion" model="mail.template">
+            <field name="name">REVISION DE LA PROPUESTA DE LICITACIÓN CON JURÍDICO</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">REVISION DE LA PROPUESTA DE LICITACIÓN CON JURÍDICO</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} tiene fecha de revisión jurídica.
+                        <br/>
+                        <br/>
+                        Fecha de revisión
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="visto_bueno_contrato" model="mail.template">
+            <field name="name">SE REQUIERE UN VISTO BUENO SOBRE EL DOCUMENTO CONTRATO</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE REQUIERE UN VISTO BUENO SOBRE EL DOCUMENTO CONTRATO</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} tiene contrato que requiere su visto bueno.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="solicitar_modificaciones_contrato" model="mail.template">
+            <field name="name">SE SOLICITAN MODIFICACIONES AL CONTRATO JURÍDICO</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE SOLICITAN MODIFICACIONES AL CONTRATO JURÍDICO</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} tiene modificaciones jurídicas al contrato.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="solicitud_documentos_creacion_cliente" model="mail.template">
+            <field name="name">SOLICITUD DE DOCUMENTOS PARA CREACIÓN DE CLIENTE</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SOLICITUD DE DOCUMENTOS PARA CREACIÓN DE CLIENTE</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere los siguientes documentos para ser creado.
+                        <br/>
+                        <br/>
+                        Listado de Documentos:<br/>
+                        Formato SAGRLAFT (excel)<br/>
+                        Certificado de Existencia Cámara de Comercio<br/>
+                        RUT<br/>
+                        EEFF o Declaración de Renta<br/>
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="pago_legalizacion_contrato" model="mail.template">
+            <field name="name">SE SOLICITA PAGO PARA LEGALIZACIÓN DE CONTRATO</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SE SOLICITA PAGO PARA LEGALIZACIÓN DE CONTRATO</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere los siguientes pagos.
+                        <br/>
+                        <br/>
+                        Listado de pagos requeridos:
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="comprobante_pago" model="mail.template">
+            <field name="name">COMPROBANTE DE PAGO</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">COMPROBANTE DE PAGO</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} ya tiene dos pagos realizados.
+                        <br/>
+                        <br/>
+                        Anexo soporte de pagos
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="poliza_contrato" model="mail.template">
+            <field name="name">PÓLIZA DE CONTRATO</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">PÓLIZA DE CONTRATO</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} ya tiene póliza de contrato.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="ticket_mesa_ayuda" model="mail.template">
+            <field name="name">TICKET MESA DE AYUDA</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">TICKET MESA DE AYUDA</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} tiene un ticket en mesa de ayuda.
+                        <br/>
+                        <br/>
+                        No. De Ticket:
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="solicitud_muestra" model="mail.template">
+            <field name="name">SOLICITUD DE MUESTRAS</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">SOLICITUD DE MUESTRAS</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere entrega de muestras.<br/>
+                        <br/>
+                        <br/>
+                        Tipo de muestra:<br/>
+                        <br/>
+                        <br/>
+                        Se anexa solicitud
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="autorizacion_solicitud_muestras" model="mail.template">
+            <field name="name">AUTORIZACIÓN SOLICITUD DE MUESTRAS PARA SER IMPRESA</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">AUTORIZACIÓN SOLICITUD DE MUESTRAS PARA SER IMPRESA</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} de ${(object.tag_ids.name)} del cliente ${(object.partner_id.display_name)} requiere autorización para ser impresa.<br/>
+                        <br/>
+                        <br/>
+                        Plazo de entrega:<br/>
+                        <br/>
+                        <br/>
+                        Datos de la oportunidad<br/>
+                        <br/>
+                        <br/>
+                        ${(object.partner_id.display_name)}<br/> 
+                        ${(object.customer_type_crm)}<br/> 
+                        ${(object.benefit_center.name)}<br/> 
+                        ${(object.segment_crm_from)}<br/> 
+                        ${(object.bussinets_units_from)}<br/> 
+                        ${(object.billing_potencial)}<br/> 
+                        <br/>
+                        Se anexa costos de la muestra.
+                        <br/>
+                        <br/>
+                        Quedamos atentos.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="business_case" model="mail.template">
+            <field name="name">OPORTUNIDAD CON BUSINESS CASE</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">OPORTUNIDAD CON BUSINESS CASE</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} de ${(object.tag_ids.name)} del cliente ${(object.partner_id.display_name)} requiere aprobación de busines case.
+                        <br/>
+                        <br/>
+                        Datos de la oportunidad
+                        <br/>
+                        <br/>
+                        ${(object.partner_id.display_name)}<br/> 
+                        ${(object.customer_type_crm)}<br/> 
+                        ${(object.benefit_center.name)}<br/> 
+                        ${(object.segment_crm_from)}<br/> 
+                        ${(object.bussinets_units_from)}<br/> 
+                        ${(object.billing_potencial)}<br/> 
+                        <br/>
+                        Se anexa business case.
+                        <br/>
+                        <br/>
+                        Quedamos atentos.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="requerimiento_tecnologia" model="mail.template">
+            <field name="name">REQUERIMIENTO DE TECNOLOGÍA</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">REQUERIMIENTO DE TECNOLOGÍA</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} de ${(object.tag_ids.name)} del cliente ${(object.partner_id.display_name)} tiene un requerimiento del área de tecnología.
+                        <br/>
+                        <br/>
+                        Datos de la oportunidad
+                        <br/>
+                        <br/>
+                        ${(object.partner_id.display_name)}<br/> 
+                        ${(object.customer_type_crm)}<br/> 
+                        ${(object.benefit_center.name)}<br/> 
+                        ${(object.segment_crm_from)}<br/> 
+                        ${(object.bussinets_units_from)}<br/> 
+                        ${(object.billing_potencial)}<br/> 
+                        <br/>
+                        Se anexa Formato de Requerimiento Tecnología.
+                        <br/>
+                        <br/>
+                        Quedamos atentos.
+                        </div>
+                        ]]></field>   
+        </record>
+        <record id="requerimiento_autorizacion_salida" model="mail.template">
+            <field name="name">REQUERIMIENTO PARA AUTORIZACIÓN DE SALIDA. MUESTRAS</field>
+            <field name="email_from">${object.name}</field>
+            <field name="subject">REQUERIMIENTO PARA AUTORIZACIÓN DE SALIDA. MUESTRAS</field>
+            <field name="partner_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere entrega de muestras.
+                        <br/>
+                        <br/>
+                        Tipo de muestra y descripción:
+                        </div>
+                        ]]></field>   
+        </record>
+    </data>
+</odoo>

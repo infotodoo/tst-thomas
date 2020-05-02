@@ -1,0 +1,672 @@
+<odoo>
+    <data>
+        <record id="solicitud_aprobacion_oficial" model="mail.template">
+            <field name="name">SOLICITUD DE APROBACIÓN OFICIAL DE CUMPLIMIENTO. LISTAS RESTRICTIVAS</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SOLICITUD DE APROBACIÓN OFICIAL DE CUMPLIMIENTO. LISTAS RESTRICTIVAS</field>
+            <field name="email_to">yovani.hernandez@thomasgreg.com,juanita.franco@thomasgreg.com</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial Saludo, <br/>
+                        <br/>
+                        Se ha creado el cliente ${(object.name)} y presenta consulta de lista restrictiva negativa.
+                        <br/>
+                        <br/> 
+                        <b>Cliente: </b> ${(object.name)}<br/> 
+                        <b>Nit: </b>${(object.nit)}<br/> 
+                        <b>Tipo de Cliente: </b>${(object.customer_type)}<br/> 
+                        <b>Sector: </b>${(object.sector)}<br/> 
+                        <b>Potencial: </b>${(object.billing_potencial)}<br/> 
+                        <br/> 
+                        <br/>  
+                        <b>Consulta lista restrictiva: </b>${(object.consult_order)}<br/> 
+                        <b>Fecha de consulta: </b>${(object.fecha_consulta)}<br/> 
+                        <b>Perfil de riesgo: </b>${(object.risk_profile)}<br/> 
+                        <b>Porcentaje de Riesgo: </b>${(object.risk_percentage)}<br/> 
+                        <br/>
+                        <br/>                
+                        Quedo atento a sus indicaciones
+                        </div>
+                        ]]></field>
+        </record>
+        
+        <record id="solicitud_aprobacion_junta_temporal" model="mail.template">
+            <field name="name">SOLICITUD DE APROBACIÓN JUNTA DIRECTIVA UNIÓN TEMPORAL</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SOLICITUD DE APROBACIÓN JUNTA DIRECTIVA UNIÓN TEMPORAL</field>
+            <field name="email_to">juanita.franco@thomasgreg.com,patricia.jimenez@thomasgreg.com,${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial Saludo, <br/>
+                        <br/>
+                        Se ha creado la nueva iniciativa ${(object.name)} del cliente ${(object.partner_id.display_name)} que requiere autorización de junta Directiva por unión Temporal.
+                        <br/>
+                        <br/>
+                        Los datos de la Oportunidad son:
+                        <br/> 
+                        <br/>  
+                        <b>Cliente: </b>${(object.partner_id.display_name)}<br/> 
+                        <b>Centro de Beneficios: </b>${(object.benefit_center.name)}<br/> 
+                        <b>Segmento: </b>${(object.segment_crm_from)}<br/> 
+                        <b>Unidad de negocio: </b>${(object.bussinets_units_from)}<br/> 
+                        <b>Director Comercial: </b>${(object.user_id.name)}<br/> 
+                        <b>Categoria: </b>${(object.priority)}<br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <b>Número de Proceso: </b>${(object.process_number)}<br/> 
+                        <b>Objeto: </b>${(object.object_crm)}<br/> 
+                        <b>Presupuesto: </b>${(object.tender_budget)}<br/> 
+                        <b>Fecha de apertura: </b>${(object.opening_date)}<br/> 
+                        <b>Cierre previsto: </b>${(object.close_date)}<br/> 
+                        <b>Tipo de licitación: </b>${(object.tender_type)}<br/>
+                        <br/>
+                        <br/>
+                        ${object.get_table_competition() | safe}
+                        <br/>
+                        <br/>
+                        <br/>
+                        <b>Nombre de la Unión Temporal: </b>${(object.name_union)}<br/> 
+                        <b>Sigla de la Unión Temporal: </b>${(object.initials_union)}<br/> 
+                        <b>Lider de la Unión Temporal: </b>${(object.leader_union_name.name)}<br/> 
+                        <b>Empresa que factura: </b>${(object.company_invoices_id.name)}<br/>
+                        <br/>
+                        ${object.get_table_member() | safe}  
+                        <br/>
+                        Quedamos atentos a su respuesta 
+                        </div>
+                        ]]></field>
+        </record>
+        
+        <record id="solicitud_aprobacion_junta" model="mail.template">
+            <field name="name">SOLICITUD DE APROBACIÓN JUNTA DIRECTIVA</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SOLICITUD DE APROBACIÓN JUNTA DIRECTIVA</field>
+            <field name="email_to">juanita.franco@thomasgreg.com,patricia.jimenez@thomasgreg.com,${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial Saludo, <br/>
+                        <br/>
+                        Se ha creado la nueva iniciativa ${(object.name)} del cliente ${(object.partner_id.display_name)} que requeire autorización de junta Directiva.
+                        <br/>
+                        <br/>
+                        Los datos de la Oportunidad son:
+                        <br/> 
+                        <br/> 
+                        <br/>  
+                        <b>Cliente: </b>${(object.partner_id.display_name)}<br/> 
+                        <b>Centro de Beneficio: </b>${(object.benefit_center.name)}<br/> 
+                        <b>Segmento: </b>${(object.segment_crm_from)}<br/> 
+                        <b>Unidad de negocio: </b>${(object.bussinets_units_from)}<br/> 
+                        <b>Director Comercial: </b>${(object.user_id.name)}<br/> 
+                        <b>Categoría: </b>${(object.priority)}<br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <b>Número de proceso: </b>${(object.process_number)}<br/> 
+                        <b>Objeto: </b>${(object.object_crm)}<br/> 
+                        <b>Presupuesto: </b>${(object.tender_budget)}<br/> 
+                        <b>Fecha de apertura: </b>${(object.opening_date)}<br/> 
+                        <b>Cierre previsto: </b>${(object.close_date)}<br/> 
+                        <b>Tipo de licitación: </b>${(object.tender_type)}<br/> 
+                        <br/>
+                        <br/>
+                        ${object.get_table_competition() | safe}
+                        <br/>
+                        <br/>
+                        Quedamos atentos a su respuesta.
+                        </div>
+                        ]]></field>
+        </record>
+        
+        <record id="cambios_etapa_entregado_cliente" model="mail.template">
+            <field name="name">CAMBIOS DE ETAPA A ENTREGADO AL CLIENTE</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">CAMBIOS DE ETAPA A ENTREGADO AL CLIENTE</field>
+            <field name="email_to">juanita.franco@thomasgreg.com,${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} a cambiado a etapa ${(object.stage_id.name)}.
+                        </div>
+                        ]]></field>
+        </record>
+        
+        <record id="cambios_etapa_oportunidad" model="mail.template">
+            <field name="name">CAMBIOS DE ETAPA DE LA OPORTUNIDAD</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">CAMBIOS DE ETAPA DE LA OPORTUNIDAD</field>
+            <field name="email_to">juanita.franco@thomasgreg.com,erika.polania@thomasgreg.com,jennya.rincon@thomasgreg.com,${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial Saludo, <br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} a cambiado a etapa ${(object.stage_id.name)}.
+                        </div>
+                        ]]></field>
+        </record>
+        
+        <record id="licitacion_subasta" model="mail.template">
+            <field name="name">LICITACION REQUIERE SUBASTA</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">LICITACION REQUIERE SUBASTA</field>
+            <field name="email_to">yovani.hernandez@thomasgreg.com,juanita.franco@thomasgreg.com,${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere ${(object.tender_type)}.
+                        <br/>
+                        <br/>
+                        Fecha de subasta:
+                        <br/>
+                        <br/>
+                        <b>Página web licitación: </b> ${(object.web_page_tender)}<br/>
+                        <b>Número de proceso: </b> ${(object.process_number)}<br/>
+                        <b>Objeto: </b> ${(object.object_crm)}<br/>
+                        <b>Presupuesto: </b> ${(object.tender_budget)}<br/>
+                        <b>Fecha de apertura: </b> ${(object.opening_date)}<br/>
+                        <b>Cierre previsto: </b> ${(object.close_date)}<br/>
+                        ${object.get_table_competition() | safe}
+                        <br/>
+                        <br/>
+                        <br/>
+                        Agradecemos su colaboración con la definición de valores a ofertar y acompañamiento en la subasta.
+                        </div>
+                        ]]></field>
+        </record>
+        
+        <record id="estimar_costos_nueva_licitacion" model="mail.template">
+            <field name="name">SE REQUIERE ESTIMAR COSTOS DE UNA NUEVA OPORTUNIDAD DE LICITACIÓN</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SE REQUIERE ESTIMAR COSTOS DE UNA NUEVA OPORTUNIDAD DE LICITACIÓN</field>
+            <field name="email_to">Stella.Romero@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere ser costeada.
+                        <br/>
+                        <br/>
+                        Plazo de entrega:<br/>
+                        <br/>
+                        <br/>
+                        Datos de la Oportunidad:<br/>
+                        <br/>
+                        <br/>
+                        ${(object.web_page_tender)}<br/>
+                        ${(object.process_number)}<br/>
+                        ${(object.object_crm)}<br/>
+                        ${(object.tender_budget)}<br/>
+                        ${(object.opening_date)}<br/>
+                        ${(object.close_date)}<br/>
+                        ${(object.tender_status)}<br/>
+                        <br/>
+                        ${object.get_table_competition() | safe}
+                        <br/>
+                        <br/>
+                        <br/>
+                        Agradecemos su pronta respuesta.
+                        </div>
+                        ]]></field>
+        </record>
+        
+        <record id="estimar_costos_nueva" model="mail.template">
+            <field name="name">SE REQUIERE ESTIMAR COSTOS DE UNA NUEVA OPORTUNIDAD</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SE REQUIERE ESTIMAR COSTOS DE UNA NUEVA OPORTUNIDAD</field>
+            <field name="email_to">Stella.Romero@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere ser costeada.
+                        <br/>
+                        <br/>
+                        Plazo de entrega:<br/>
+                        <br/>
+                        <br/>
+                        Datos de la Oportunidad:<br/>
+                        <br/>
+                        <br/>
+                        <b>Cliente: </b> ${(object.partner_id.display_name)}<br/>
+                        <b>Tipo de cliente: </b> ${(object.customer_type_crm)}<br/>
+                        <b>Cetro de beneficio: </b> ${(object.benefit_center.name)}<br/>
+                        <b>Segmento: </b> ${(object.segment_crm_from)}<br/>
+                        <b>Unidad de negocio: </b> ${(object.bussinets_units_from)}<br/>
+                        <br/>
+                        <br/>
+                        Agradecemos su pronta respuesta.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="remita_observaciones_liquidacion" model="mail.template">
+            <field name="name">SE REQUIERE REMITA OBSERVACIONES AL PROCESO DE LICITACIÓN</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SE REQUIERE REMITA OBSERVACIONES AL PROCESO DE LICITACIÓN</field>
+            <field name="email_to">Stella.Romero@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere que remita sus observaciones.
+                        <br/>
+                        <br/>
+                        Fecha límite para observar:<br/>
+                        <br/>
+                        <br/>
+                        <b>Página web de licitación: </b> ${(object.web_page_tender)}<br/>
+                        <b>Número de proceso: </b> ${(object.process_number)}<br/>
+                        <b>Objeto: </b> ${(object.object_crm)}<br/>
+                        <b>Presupuesto: </b> ${(object.tender_budget)}<br/>
+                        <b>Fecha de apertura: </b> ${(object.opening_date)}<br/>
+                        <b>Cierre previsto: </b> ${(object.close_date)}<br/>
+                        <b>Estado de la licitación: </b> ${(object.tender_status)}<br/>
+                        <br/>
+                        ${object.get_table_competition() | safe}<br/>
+                        <br/>
+                        Agradecemos su pronta respuesta.
+                        </div>
+                        ]]></field>
+        </record>
+        
+        <record id="aprobacion_oferta" model="mail.template">
+            <field name="name">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL LICITACIÓN</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL LICITACIÓN</field>
+            <field name="email_to">Stella.Romero@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere su aprobación.
+                        <br/>
+                        <br/>
+                        <b>Página web de licitación: </b> ${(object.web_page_tender)}<br/>
+                        <b>Número de proceso: </b> ${(object.process_number)}<br/>
+                        <b>Objeto: </b> ${(object.object_crm)}<br/>
+                        <b>Presupuesto: </b> ${(object.tender_budget)}<br/>
+                        <b>Fecha de apertura: </b> ${(object.opening_date)}<br/>
+                        <b>Cierre previsto: </b> ${(object.close_date)}<br/>
+                        <b>Estado de la licitación: </b> ${(object.tender_status)}<br/>
+                        <br/>
+                        ${object.get_table_competition() | safe}<br/>
+                        <br/>
+                        Quedamos atentos.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        
+        <record id="aprobacion_oferta_comercial_gerente" model="mail.template">
+            <field name="name">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="email_to">juanita.franco@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere su aprobación.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="aprobacion_oferta_comercial_financiero" model="mail.template">
+            <field name="name">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SE REQUIERE APROBACIÓN DE LA OFERTA COMERCIAL</field>
+            <field name="email_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere su aprobación.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="revision_propuesta_licitacion" model="mail.template">
+            <field name="name">REVISION DE LA PROPUESTA DE LICITACIÓN CON JURÍDICO</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">REVISION DE LA PROPUESTA DE LICITACIÓN CON JURÍDICO</field>
+            <field name="email_to">${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} tiene fecha de revisión jurídica.
+                        <br/>
+                        <br/>
+                        Fecha de revisión
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="visto_bueno_contrato" model="mail.template">
+            <field name="name">SE REQUIERE UN VISTO BUENO SOBRE EL DOCUMENTO CONTRATO</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SE REQUIERE UN VISTO BUENO SOBRE EL DOCUMENTO CONTRATO</field>
+            <field name="email_to">${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} tiene contrato que requiere su visto bueno.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="solicitar_modificaciones_contrato" model="mail.template">
+            <field name="name">SE SOLICITAN MODIFICACIONES AL CONTRATO JURÍDICO</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SE SOLICITAN MODIFICACIONES AL CONTRATO JURÍDICO</field>
+            <field name="email_to">yovani.hernandez@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} tiene modificaciones jurídicas al contrato.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="solicitud_documentos_creacion_cliente" model="mail.template">
+            <field name="name">SOLICITUD DE DOCUMENTOS PARA CREACIÓN DE CLIENTE</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SOLICITUD DE DOCUMENTOS PARA CREACIÓN DE CLIENTE</field>
+            <field name="email_to">${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere los siguientes documentos para ser creado.
+                        <br/>
+                        <br/>
+                        Listado de Documentos:<br/>
+                        Formato SAGRLAFT (excel)<br/>
+                        Certificado de Existencia Cámara de Comercio<br/>
+                        RUT<br/>
+                        EEFF o Declaración de Renta<br/>
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="pago_legalizacion_contrato" model="mail.template">
+            <field name="name">SE SOLICITA PAGO PARA LEGALIZACIÓN DE CONTRATO</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SE SOLICITA PAGO PARA LEGALIZACIÓN DE CONTRATO</field>
+            <field name="email_to">jennya.rincon@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere los siguientes pagos.
+                        <br/>
+                        <br/>
+                        Listado de pagos requeridos:
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="comprobante_pago" model="mail.template">
+            <field name="name">COMPROBANTE DE PAGO</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">COMPROBANTE DE PAGO</field>
+            <field name="email_to">erika.polania@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} ya tiene dos pagos realizados.
+                        <br/>
+                        <br/>
+                        Anexo soporte de pagos
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="poliza_contrato" model="mail.template">
+            <field name="name">PÓLIZA DE CONTRATO</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">PÓLIZA DE CONTRATO</field>
+            <field name="email_to">${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} ya tiene póliza de contrato.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="ticket_mesa_ayuda" model="mail.template">
+            <field name="name">TICKET MESA DE AYUDA</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">TICKET MESA DE AYUDA</field>
+            <field name="email_to">${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} tiene un ticket en mesa de ayuda.
+                        <br/>
+                        <br/>
+                        No. De Ticket:
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="solicitud_muestra" model="mail.template">
+            <field name="name">SOLICITUD DE MUESTRAS</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">SOLICITUD DE MUESTRAS</field>
+            <field name="email_to">Stella.Romero@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere entrega de muestras.<br/>
+                        <br/>
+                        <br/>
+                        Tipo de muestra:<br/>
+                        <br/>
+                        <br/>
+                        Se anexa solicitud
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="autorizacion_solicitud_muestras" model="mail.template">
+            <field name="name">AUTORIZACIÓN SOLICITUD DE MUESTRAS PARA SER IMPRESA</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">AUTORIZACIÓN SOLICITUD DE MUESTRAS PARA SER IMPRESA</field>
+            <field name="email_to">juanita.franco@thomasgreg.com,${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} de ${(object.tag_ids.name)} del cliente ${(object.partner_id.display_name)} requiere autorización para ser impresa.<br/>
+                        <br/>
+                        <br/>
+                        Plazo de entrega:<br/>
+                        <br/>
+                        <br/>
+                        Datos de la oportunidad<br/>
+                        <br/>
+                        <br/>
+                        <b>Cliente: </b> ${(object.partner_id.display_name)}<br/> 
+                        <b>Tipo de Cliente: </b> ${(object.customer_type_crm)}<br/> 
+                        <b>Centro de beneficio: </b> ${(object.benefit_center.name)}<br/> 
+                        <b>Segmento: </b> ${(object.segment_crm_from)}<br/> 
+                        <b>Unidad de negocio: </b> ${(object.bussinets_units_from)}<br/>
+                        <b>Unidad de negocio: </b> ${(object.opportuny_situation)}<br/>  
+                        <b>Potencial de facturazión: </b> ${(object.billing_potencial)}<br/>
+                        <br/>
+                        ${object.get_table_competition() | safe}<br/>
+                        <br/> 
+                        <br/>
+                        Se anexa costos de la muestra.
+                        <br/>
+                        <br/>
+                        Quedamos atentos.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="business_case" model="mail.template">
+            <field name="name">OPORTUNIDAD CON BUSINESS CASE</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">OPORTUNIDAD CON BUSINESS CASE</field>
+            <field name="email_to">yovani.hernandez@thomasgreg.com,juanita.franco@thomasgreg.com,${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} de ${(object.tag_ids.name)} del cliente ${(object.partner_id.display_name)} requiere aprobación de busines case.
+                        <br/>
+                        <br/>
+                        Datos de la oportunidad
+                        <br/>
+                        <br/>
+                        <b>Cliente: </b> ${(object.partner_id.display_name)}<br/> 
+                        <b>Tipo de Cliente: </b> ${(object.customer_type_crm)}<br/> 
+                        <b>Centro de beneficio: </b> ${(object.benefit_center.name)}<br/> 
+                        <b>Segmento: </b> ${(object.segment_crm_from)}<br/> 
+                        <b>Unidad de negocio: </b> ${(object.bussinets_units_from)}<br/>
+                        <b>Unidad de negocio: </b> ${(object.opportuny_situation)}<br/>  
+                        <b>Potencial de facturazión: </b> ${(object.billing_potencial)}<br/>
+                        <br/>
+                        ${object.get_table_competition() | safe}<br/>
+                        <br/>
+                        Se anexa business case.
+                        <br/>
+                        <br/>
+                        Quedamos atentos.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="requerimiento_tecnologia" model="mail.template">
+            <field name="name">REQUERIMIENTO DE TECNOLOGÍA</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">REQUERIMIENTO DE TECNOLOGÍA</field>
+            <field name="email_to">oscar.alvarez@thomsgreg.com,${(object.email_from)}</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} de ${(object.tag_ids.name)} del cliente ${(object.partner_id.display_name)} tiene un requerimiento del área de tecnología.
+                        <br/>
+                        <br/>
+                        Datos de la oportunidad
+                        <br/>
+                        <br/>
+                        <b>Cliente: </b> ${(object.partner_id.display_name)}<br/> 
+                        <b>Tipo de Cliente: </b> ${(object.customer_type_crm)}<br/> 
+                        <b>Centro de beneficio: </b> ${(object.benefit_center.name)}<br/> 
+                        <b>Segmento: </b> ${(object.segment_crm_from)}<br/> 
+                        <b>Unidad de negocio: </b> ${(object.bussinets_units_from)}<br/>
+                        <b>Unidad de negocio: </b> ${(object.opportuny_situation)}<br/>  
+                        <b>Potencial de facturazión: </b> ${(object.billing_potencial)}<br/> 
+                        <br/>
+                        ${object.get_table_competition() | safe}<br/>
+                        <br/>
+                        Se anexa Formato de Requerimiento Tecnología.
+                        <br/>
+                        <br/>
+                        Quedamos atentos.
+                        </div>
+                        ]]></field>   
+        </record>
+        
+        <record id="requerimiento_autorizacion_salida" model="mail.template">
+            <field name="name">REQUERIMIENTO PARA AUTORIZACIÓN DE SALIDA. MUESTRAS</field>
+            <field name="email_from">${user.email_formatted | safe}</field>
+            <field name="subject">REQUERIMIENTO PARA AUTORIZACIÓN DE SALIDA. MUESTRAS</field>
+            <field name="email_to">jennya.rincon@thomasgreg.com</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="auto_delete" eval="True"/>            
+            <field name="body_html"><![CDATA[
+                        <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        Cordial saludo<br/>
+                        <br/>
+                        <br/>
+                        La oportunidad ${(object.name)} del cliente ${(object.partner_id.display_name)} requiere entrega de muestras.
+                        <br/>
+                        <br/>
+                        Tipo de muestra y descripción:
+                        </div>
+                        ]]></field>   
+        </record>
+    </data>
+</odoo>
